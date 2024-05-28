@@ -15,8 +15,9 @@ func SuccessfulResponse(c *gin.Context, statusCode int, message string) {
 	if err != nil {
 		cookie = "random_stuff"
 	}
+
 	c.SetSameSite(http.SameSiteNoneMode)
-	c.SetCookie("auth", cookie, 3600, "/", "localhost", true, true)
+	c.SetCookie("auth", cookie, 300, "/", "localhost", true, true)
 
 	if message == "" {
 		message = http.StatusText(statusCode)
